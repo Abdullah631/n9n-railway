@@ -5,9 +5,18 @@ services:
       - "5678:5678"
     environment:
       - GENERIC_TIMEZONE=Asia/Karachi
+
+      # Basic Auth
       - N8N_BASIC_AUTH_ACTIVE=true
       - N8N_BASIC_AUTH_USER=abdullah.arshad1823@gmail.com
       - N8N_BASIC_AUTH_PASSWORD=1234ABcd@
+
+      # 🚨 REQUIRED for Railway Deployment
+      - N8N_HOST=0.0.0.0
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=https
+      - WEBHOOK_TUNNEL_URL=https://n9n-railway-production.up.railway.app/
+
     volumes:
       - n8n_data:/home/node/.n8n
 
